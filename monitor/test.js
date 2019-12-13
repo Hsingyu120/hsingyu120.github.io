@@ -28,6 +28,7 @@ function getdata() {
     docRef.get().then(function(doc) {
             if (doc.exists) {
                 console.log(doc.data());
+                $('#show').empty()
                 $span = $('<span>').text(JSON.stringify(doc.data()));
                 $('#show').append($span)
 
