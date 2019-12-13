@@ -24,7 +24,7 @@ function storedata() {
 }
 
 function getdata() {
-    var docRef = db.collection("usr").doc("usr_01");
+    var docRef = db.collection("Sensor").doc("20191213");
     docRef.get().then(function(doc) {
             if (doc.exists) {
                 console.log(doc.data());
