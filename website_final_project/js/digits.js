@@ -51,7 +51,7 @@ $(() => {
         $result = $('<td>').text(A + "A" + B + "B")
         $tr.append($times).append($guess).append($result)
 
-        $('#data').append($tr)
+        $('#data').prepend($tr)
 
 
 
