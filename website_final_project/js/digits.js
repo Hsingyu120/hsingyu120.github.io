@@ -3,6 +3,7 @@ $(() => {
     console.log('JS ready')
         //隨機產生一組解答
     var answer = createanswer()
+    console.log(answer)
 
     $('#answer').on('click', () => {
         $('#outputanswer').val(answer)
