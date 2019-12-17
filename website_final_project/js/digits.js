@@ -22,6 +22,7 @@ $(() => {
         try {
             var guess = getguess(String($('#inputdigits').val()))
         } catch (e) {
+            times--
             if (e == "InvalidLengthError") {
                 alert("請輸入四位數字")
             } else if (e == "repeatdigitError") {
