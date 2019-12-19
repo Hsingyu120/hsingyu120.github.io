@@ -9,34 +9,116 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
-
+    <link rel="stylesheet" href="./test.css">
     <title>Slessper</title>
 </head>
 
 <body>
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-4 " style="text-align:center">Slessper</h1>
+                </div>
+            </div>
+        </div>
+        <div style="height:100px">
+            <h1 style="margin-top: 50px;    font-weight: 300;">現在時間</h1>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">日期</label>
+                <input type="text" id="date" class="form-control">
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">星期</label>
+                <input type="text" id="day" class="form-control">
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">時間</label>
+                <input type="text" id="time" class="form-control">
+
+            </div>
+        </div>
+        <div style="height:100px">
+            <h1 style="margin-top: 50px;    font-weight: 300;">現在數值</h1>
+        </div>
 
 
-    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">現在溫度</label>
+                <input type="text" id="temp" class="form-control" placeholder="溫度">
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">現在濕度</label>
+                <input type="text" id="hum" class="form-control" placeholder="濕度">
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">現在二氧化碳濃度</label>
+                <input type="text" id="co2" class="form-control" placeholder="二氧化碳濃度 ">
+
+            </div>
+        </div>
+        <div style="text-align: center;"> <button id="submit" type="button" class="btn btn-primary">Check Now</button></div>
+
+        <div style="height:100px">
+            <h1 style="margin-top: 50px;    font-weight: 300;">設定最晚起床時間</h1>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">日期</label>
+                <input type="text" id="date" class="form-control" placeholder="YYYY/MM/DD">
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">時間</label>
+                <input type="text" id="time" class="form-control" placeholder="24:00">
+
+            </div>
+            <div class="col-md-4 mb-3" id="savediv">
+
+                <button id="save" type="button" class="btn btn-primary">Save</button>
+
+            </div>
+
+
+        </div>
+        <!-- <button id="save" type="button" class="btn btn-primary">Save</button> -->
+    </div>
+
+
+
+
+
+
+
+
+    <!-- <button id="main "> store</button> -->
+    <!-- <button onclick="storedata() ">store</button> -->
+
+    <div id="show "></div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js "></script>
     <!-- 引入 firebase 函式庫 -->
-    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase.js "></script>
     <!-- 引入 firestore 函式庫 -->
-    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
-    <script src="./test.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js "></script>
 
-    <!-- <button id="main"> store</button> -->
-    <button onclick="storedata()">store</button>
-    <button onclick="getdata()">get</button>
-    <div id="show"></div>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="./test.js "></script>
 </body>
 
 </html>
