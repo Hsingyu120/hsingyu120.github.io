@@ -33,7 +33,6 @@ $(() => {
 
         //結果判斷
         for (let index = 0; index < 4; index++) {
-            const element = guess[index];
             if (guess[index] == answer[index]) {
                 A++
             } else if (guess[index] == answer[0] | guess[index] == answer[1] | guess[index] == answer[2] | guess[index] == answer[3]) {
