@@ -28,8 +28,37 @@ $(() => {
 
         //console.log(String(d.getDay()) + " " + String(d.getMonth() + 1) + " " + String(d.getDate()) + " " + String(d.getHours()) + " " + String(d.getMinutes()) + " " + String(d.getSeconds()))
     }
+    var sensorvalue = () => {
+
+        console.log('initial sensor value')
+
+        var docRef = db.collection("Sensor").doc("20191213");
+        docRef.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log(doc.data().tem);
+                    $('#show').empty()
+                        // $span = $('<span>').text(JSON.stringify(doc.data()[1]));
+                        //   $('#show').append($span)
+
+
+                    $('#temp').val(doc.data().tem)
+                    $('#hum').val(doc.data().hum)
+                    $('#co2').val(doc.data().co2)
+
+
+
+                } else {
+                    console.log("找不到文件");
+                }
+            })
+            .catch(function(error) {
+                console.log("提取文件時出錯:", error);
+            });
+
+    }
 
     setInterval(gettime, 1000)
+    sensorvalue()
 
 
 
@@ -50,7 +79,7 @@ $(() => {
 
                     $('#temp').val(doc.data().tem)
                     $('#hum').val(doc.data().hum)
-                    $('#co2').val("NA")
+                    $('#co2').val(doc.data().co2)
 
 
 
@@ -63,4 +92,7 @@ $(() => {
             });
 
     })
+
+
+
 })
