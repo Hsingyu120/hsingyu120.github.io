@@ -106,6 +106,51 @@
     color: white
 }
 
+.Moji0 {
+    font-size: 50px;
+    color: hsl(0, 100%, 50%);
+}
+
+.Moji1 {
+    font-size: 50px;
+    color: hsl(29, 100%, 50%);
+}
+
+.Moji2 {
+    font-size: 50px;
+    color: hsl(59, 100%, 50%);
+}
+
+.Moji3 {
+    font-size: 50px;
+    color: hsl(89, 43%, 51%);
+}
+
+.Moji4 {
+    font-size: 50px;
+    color: hsl(234, 100%, 50%);
+}
+
+.Moji5 {
+    font-size: 50px;
+    color: hsl(271, 100%, 50%);
+}
+
+.Moji6 {
+    font-size: 50px;
+    color: brown
+}
+
+.Moji7 {
+    font-size: 50px;
+    color: black
+}
+
+.Moji8 {
+    font-size: 50px;
+    color: white
+}
+
 table {
     text-align: center;
     vertical-align: middle;
@@ -127,6 +172,16 @@ input {
     font-size: 50px;
     height: 100px;
     width: 400px;
+}
+
+#challenge {
+    height: 100px;
+    width: 300px;
+}
+
+#normal {
+    height: 100px;
+    width: 300px;
 }
 
 body {
