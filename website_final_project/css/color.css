@@ -172,3 +172,24 @@ body {
 .answerspan {
     font-size: 50px;
 }
+
+.error {
+    background-color: rgb(255, 38, 0);
+    width: 20px;
+    box-shadow: 0 0 13px 6px #ff0404;
+}
+
+.correct {
+    background-color: yellowgreen;
+    width: 20px;
+    box-shadow: 0 0 13px 6px #86c765;
+}
+
+.nside {
+    width: 20px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
