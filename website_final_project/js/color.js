@@ -81,6 +81,8 @@ $(() => {
 
     $('#confirm').on('click', () => {
 
+        console.log("clicked")
+
         var correct = 0;
         var error = 0;
         var ans = question();
@@ -95,8 +97,21 @@ $(() => {
 
                 if (false == ans) {
                     correct++
+
+                    $("#left").attr("class", 'correct');
+
+                    setTimeout(function timeout() {
+                        $("#left").attr("class", 'nside');
+                    }, 300);
+
+
+                    //$('#left').attr("class", 'correct')
                 } else {
                     error++
+                    $('#left').attr("class", 'error')
+                    setTimeout(function timeout() {
+                        $("#left").attr("class", 'nside');
+                    }, 300);
                 }
 
                 $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
@@ -106,8 +121,16 @@ $(() => {
 
                 if (true == ans) {
                     correct++
+                    $('#right').attr("class", 'correct')
+                    setTimeout(function timeout() {
+                        $("#right").attr("class", 'nside');
+                    }, 300);
                 } else {
                     error++
+                    $('#right').attr("class", 'error')
+                    setTimeout(function timeout() {
+                        $("#right").attr("class", 'nside');
+                    }, 300);
                 }
 
                 $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
