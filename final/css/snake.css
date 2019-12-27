@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    outline: none;
+    margin: auto;
+}
+
+.box {
+    width: 3.2rem;
+    margin: auto;
+    float: left;
+}
+
+.oul {
+    width: 3.14rem;
+    height: 3.14rem;
+    border: 0.03rem solid peru;
+}
+
+.oul li {
+    list-style: none;
+    width: 5%;
+    height: 5%;
+    float: left;
+}
+
+.box1 {
+    width: 2rem;
+    height: 1rem;
+    padding-top: 0.3rem;
+    font-size: 0.2rem;
+    margin: auto;
+    float: left;
+}
+
+#level {
+    width: 100%;
+    height: 0.4rem;
+}
+
+#ls {
+    color: paleturquoise;
+    margin-left: 0.1rem;
+}
+
+#dqcd {
+    color: paleturquoise;
+    margin-left: 0.01rem;
+}
+
+#btn1 {
+    width: 50%;
+    height: 0.3rem;
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+    background: palegreen;
+    color: #fff;
+}
+
+#btn2 {
+    width: 50%;
+    height: 0.3rem;
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+    background: palegreen;
+    color: #fff;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 100px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    html {
+        font-size: 113px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    html {
+        font-size: 117px;
+    }
+}
+
+@media screen and (min-width: 384px) {
+    html {
+        font-size: 120px;
+    }
+}
+
+@media screen and (min-width: 412px) {
+    html {
+        font-size: 128px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 129px;
+    }
+}
+
+@media screen and (min-width: 440px) {
+    html {
+        font-size: 138px;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 150px;
+    }
+}
