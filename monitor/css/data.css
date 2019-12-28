@@ -36,3 +36,7 @@ h1 {
     background-color: #7e7e7e;
     border-color: #7e7e7e;
 }
+
+th {
+    font-size: 15px;
+}
