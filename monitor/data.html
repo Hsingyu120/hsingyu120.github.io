@@ -31,6 +31,8 @@
 
 
     <div class="container">
+
+
         <div class="row">
             <div class="col">
                 <div class="jumbotron">
@@ -38,6 +40,17 @@
                 </div>
             </div>
         </div>
+
+        <ul>
+            <li>
+                使用者設定最晚起床時間：使用者在睡前設定隔天起床時間之死線
+            </li>
+            <li>睡前鬧鐘喚醒預估：設定後即時根據過去五天的習慣計算「喚醒預估時間」</li>
+            <li>鬧鐘實際喚醒時間：鬧鐘實際喚醒時間會根據睡前喚醒預估加環境因素浮動</li>
+            <li>實際起床時間：實際起床時間為使用者觸發某個遠離床的遠端物件(Nodemcu)才會通知鬧鐘端(Rpi)紀錄</li>
+            <li>賴床時長：實際起床時間 - 鬧鐘實際喚醒時間</li>
+
+        </ul>
 
         <table class="table table-striped">
             <thead>
@@ -52,12 +65,6 @@
                     <th scope="col">喚醒前溫度</th>
                     <th scope="col">喚醒前濕度</th>
                     <th scope="col">喚醒前CO<span style="font-size: 10px;">2</span>濃度</th>
-
-
-
-
-
-
                 </tr>
             </thead>
             <tbody id="data">
