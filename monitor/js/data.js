@@ -52,7 +52,7 @@ $(() => {
                 if (doc.exists) {
 
                     //輸出歷次結果表格
-                    $tr = $('<tr>')
+                    $tr = $('<tr>').attr("align", "center")
                     $date = $('<th>').attr('scope', "row").text(doc.data().日期)
                     $dead = $('<td>').text(doc.data().使用者設定起床時間)
                     $estimate = $('<td>').text(doc.data().鬧鐘預計喚醒時間)
