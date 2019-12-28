@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/data.css">
+    <title>Slessper</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark " style="background-color: #8a94ca;">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </div>
+        </div> -->
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-4 " style="text-align:center">Slessper</h1>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">日期</th>
+                    <th scope="col">使用者設定最晚起床時間</th>
+                    <th scope="col">睡前鬧鐘喚醒預估</th>
+                    <th scope="col">鬧鐘實際喚醒時間</th>
+                    <th scope="col">實際起床時間</th>
+                    <th scope="col">賴床時長</th>
+
+                    <th scope="col">喚醒前溫度</th>
+                    <th scope="col">喚醒前濕度</th>
+                    <th scope="col">喚醒前CO<span style="font-size: 10px;">2</span>濃度</th>
+
+
+
+
+
+
+                </tr>
+            </thead>
+            <tbody id="data">
+
+            </tbody>
+        </table>
+        <!-- 
+        <div style="height:80px">
+            <h1>現在數值</h1>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom01">現在溫度</label>
+                <input type="text" id="temp" class="form-control" placeholder="溫度">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom02">現在濕度</label>
+                <input type="text" id="hum" class="form-control" placeholder="濕度">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom02">現在二氧化碳濃度</label>
+                <input type="text" id="co2" class="form-control" placeholder="二氧化碳濃度 ">
+
+            </div>
+            <div class="col-md-3 mb-3 center" style="line-height: 100px;">
+
+                <button id="submit" type="button" class="btn mybtn">Update</button>
+            </div>
+
+        </div> -->
+
+
+
+        <!-- <button id="save" type="button" class="btn btn-primary">Save</button> -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js "></script>
+    <!-- 引入 firebase 函式庫 -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase.js "></script>
+    <!-- 引入 firestore 函式庫 -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js "></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="js/data.js "></script>
+</body>
+
+</html>
