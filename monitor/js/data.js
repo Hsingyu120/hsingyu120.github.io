@@ -42,7 +42,39 @@ function sensorvalue() {
 
 $(() => {
 
-    sensorvalue()
+
+
+    var day = ['第一天', '第二天', '第三天', '第四天', '第五天']
+    for (let index = 0; index < day.length; index++) {
+        var docRef = db.collection("fake_data").doc("situation1").collection(day[index]).doc("數據");
+        docRef.get().then(function(doc) {
+
+                if (doc.exists) {
+
+                    //輸出歷次結果表格
+                    $tr = $('<tr>')
+                    $date = $('<th>').attr('scope', "row").text(doc.data().日期)
+                    $dead = $('<td>').text(doc.data().使用者設定起床時間)
+                    $estimate = $('<td>').text(doc.data().鬧鐘預計喚醒時間)
+                    $accall = $('<td>').text(doc.data().鬧鐘實際喚醒時間)
+                    $acwakeup = $('<td>').text(doc.data().使用者實際起床時間)
+                    $snooze = $('<td>').text(doc.data().使用者賴床時間)
+                    $temp = $('<td>').text(doc.data().喚醒前一小時平均溫度)
+                    $hum = $('<td>').text(doc.data().喚醒前一小時平均濕度)
+                    $co2 = $('<td>').text(doc.data().喚醒前一小時平均二氧化碳濃度)
+                    $tr.append($date).append($dead).append($estimate).append($accall).append($acwakeup).append($snooze).append($temp).append($hum).append($co2)
+
+                    $('#data').append($tr)
+                } else {
+                    console.log("找不到文件");
+                }
+            })
+            .catch(function(error) {
+                console.log("提取文件時出錯:", error);
+            });
+
+        ;
+    }
 
 
 
