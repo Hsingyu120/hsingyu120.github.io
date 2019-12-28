@@ -161,6 +161,14 @@ var questionchallenge = () => {
 
 
 function showresult() {
+
+    $('#conoragain').empty()
+
+    $again = $('<button>').attr('id', 'again').attr('type', 'button').attr('class', 'btn').addClass('btn-primary').text('重新')
+    $home = $('<a>').attr('href', location.href)
+
+    $('#conoragain').append($again.append($home))
+
     $correct = $('<div>').attr("class", "result").attr("align", "center")
     $label1 = $('<label>').text('正確')
     $input1 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'correct')
@@ -193,31 +201,36 @@ function showresult() {
 $(() => {
     var mode = 0
     $('#confirm').on('click', () => {
+
         if (mode == 0) {
             alert('請先選擇難度')
         } else if (mode == 1) {
 
+
+            $('#result').empty() //清掉模式選擇
+
             showresult()
             normal()
             mode = 0
-            $('#again').on('click', () => {
+                // $('#again').on('click', () => {
 
-                alert("again")
-                return
+            //     alert("again")
+            //     return
 
-            })
+            // })
         } else if (mode == 2) {
+            $('#result').empty()
 
             showresult()
             challenge()
             console.log("go here")
             mode = 0
-            $('#again').on('click', () => {
+                // $('#again').on('click', () => {
 
-                alert("again")
+            //     alert("again")
 
 
-            })
+            // })
 
         }
 
@@ -243,35 +256,54 @@ $(() => {
 
     })
 
+    // $('#again').on('click', () => {
+
+
+
+
+    // })
 
 
 
 
 })
 
-
-var challenge = () => {
-    console.log("challenge")
-    var correct = 0;
-    var error = 0;
-    var ans = questionchallenge();
+var updateresult = (correct, error, score) => {
     $('#correct').val(correct)
     $('#error').val(error)
-    $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
-        // $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
-    $again = $('<button>').attr("class", "btn-primary").addClass("btn-lg").text('重來').attr("id", "again")
-        // $('#answerlist').empty()
-        // $('#answerlist').append($answer)
-        //$('#answerlist').append($again)
+
+
+
+
+    if (score >= 0) {
+        $('#score').val(score)
+        return score
+    } else {
+
+        $('#score').val(0)
+        return 0
+    }
+
+}
+
+
+var challenge = () => {
+
+    var correct = 0;
+    var error = 0;
+    var score = 0;
+    var ans = questionchallenge();
+    score = updateresult(correct, error, score);
 
 
     function keyFunction() {
-        console.log("keyfunction")
+        // console.log("keyfunction")
 
         if (event.keyCode == 37) {
 
             if (false == ans) {
                 correct++
+                score++
 
                 $("#left").attr("class", 'correct');
 
@@ -283,36 +315,36 @@ var challenge = () => {
 
             } else {
                 error++
+                score -= 2
                 $('#left').attr("class", 'error')
                 setTimeout(function timeout() {
                     $("#left").attr("class", 'nside');
                 }, 300);
             }
 
-            $('#correct').val(correct)
-            $('#error').val(error)
-            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+            score = updateresult(correct, error, score)
+
             ans = questionchallenge()
 
         } else if (event.keyCode == 39) {
 
             if (true == ans) {
                 correct++
+                score++
                 $('#right').attr("class", 'correct')
                 setTimeout(function timeout() {
                     $("#right").attr("class", 'nside');
                 }, 300);
             } else {
                 error++
+                score -= 2
                 $('#right').attr("class", 'error')
                 setTimeout(function timeout() {
                     $("#right").attr("class", 'nside');
                 }, 300);
             }
 
-            $('#correct').val(correct)
-            $('#error').val(error)
-            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+            score = updateresult(correct, error, score)
             ans = questionchallenge();
 
         }
@@ -323,13 +355,10 @@ var challenge = () => {
 var normal = () => {
     var correct = 0;
     var error = 0;
+    var score = 0;
     var ans = questionnormal();
-    $('#correct').val(correct)
-    $('#error').val(error)
-    $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
-        // $('#answerlist').empty()
-        // $('#answerlist').append($answer)
 
+    score = updateresult(correct, error, score)
 
     function keyFunction() {
 
@@ -337,6 +366,7 @@ var normal = () => {
 
             if (false == ans) {
                 correct++
+                score++
 
                 $("#left").attr("class", 'correct');
 
@@ -348,36 +378,34 @@ var normal = () => {
                 //$('#left').attr("class", 'correct')
             } else {
                 error++
+                score -= 2
                 $('#left').attr("class", 'error')
                 setTimeout(function timeout() {
                     $("#left").attr("class", 'nside');
                 }, 300);
             }
-
-            $('#correct').val(correct)
-            $('#error').val(error)
-            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+            score = updateresult(correct, error, score)
             ans = questionnormal()
 
         } else if (event.keyCode == 39) {
 
             if (true == ans) {
                 correct++
+                score++
                 $('#right').attr("class", 'correct')
                 setTimeout(function timeout() {
                     $("#right").attr("class", 'nside');
                 }, 300);
             } else {
                 error++
+                score -= 2
                 $('#right').attr("class", 'error')
                 setTimeout(function timeout() {
                     $("#right").attr("class", 'nside');
                 }, 300);
             }
 
-            $('#correct').val(correct)
-            $('#error').val(error)
-            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+            score = updateresult(correct, error, score)
             ans = questionnormal();
 
         }
