@@ -37,19 +37,18 @@
 
     <div class=".container-fluid">
         <div class="row">
+
             <div class="nside" id="left"></div>
             <div class="col">
                 <div class="row">
 
                     <div class="col-md-5">
                         <div class="result" style="width: 300px;">
-                            <h1 style="padding-left: 40px;">遊戲規則</h1>
+                            <h1 style="padding-left: 40px; ">遊戲規則</h1>
                         </div>
 
                         <div class="result">
                             <ul>
-
-
                                 <li>認為文字敘述正確按右鍵</li>
                                 <li>認為文字敘述錯誤按左鍵</li>
                                 <li>
@@ -58,65 +57,55 @@
                                         <li>錯誤頁面邊緣會有紅燈</li>
                                     </ul>
                                 </li>
-
-
                             </ul>
                         </div>
                         <div class="result">
                             <ul>
-
                                 <li>限時30秒內</li>
                                 <li>答對得一分</li>
                                 <li>錯誤扣兩分</li>
-                                <li>
-                                    扣到零分為止
-                                </li>
-
-
-
+                                <li>最低扣到零分</li>
                             </ul>
                         </div>
 
+                    </div>
 
+                    <div id="result" class="col-md-7">
+
+                        <div class="result" style="width: 800px;">
+                            <h1 style="text-align: initial;">難度選擇</h1>
+                        </div>
+                        <div class="result"><button id="normal" type="button" class="btn btn-success">普通</button></div>
+
+                        <div class="result"> <button id="challenge" type="button" class="btn btn-warning">困難</button>
+                        </div>
 
 
                     </div>
-
-                    <div id="result" class="col-md-7" align="center">
-
-
-
-
-
-
-                    </div>
-
 
                 </div>
 
                 <!-- 題目 -->
                 <div class="container" id="container">
                     <div class="quecontainer container">
-                        <div class="container start">
-                            <button id="normal" type="button" class="btn btn-success">普通</button><button id="challenge" type="button" class="btn btn-warning">困難</button>
-                        </div>
-                        <div class="container start">
-                            <button id="confirm" type="button" class="btn btn-primary">開始</button>
-                        </div>
 
-
+                        <!-- 產生問題的地方 -->
                     </div>
 
 
+
+
+
                 </div>
-                <div style="height: 150px; line-height: 150px;"></div>
-                <div class="container">
-                    <div class="col" id="answerlist"> </div>
+
+                <div id="conoragain" class="container start">
+                    <button id="confirm" type="button" class="btn btn-primary">開始</button>
                 </div>
+
+
 
 
                 <div class="row">
-
                     <div class="col text-center">
                         <footer>
                             copyright &copy; Hsingyu
@@ -127,7 +116,7 @@
             </div>
             <div class="nside" id="right"></div>
         </div>
-        ｂ
+
 
     </div>
 
