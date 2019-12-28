@@ -6,7 +6,7 @@ import pandas as pd # 引用套件並縮寫為 pd
 
 # 引用私密金鑰
 # path/to/serviceAccount.json 請用自己存放的路徑
-cred = credentials.Certificate('../serviceAccount.json')
+cred = credentials.Certificate('/Users/hsingyu/Documents/機電整合四/final_project/website/serviceAccount.json')
 
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
