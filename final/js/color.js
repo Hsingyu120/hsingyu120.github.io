@@ -160,7 +160,33 @@ var questionchallenge = () => {
 }
 
 
+function showresult() {
+    $correct = $('<div>').attr("class", "result").attr("align", "center")
+    $label1 = $('<label>').text('正確')
+    $input1 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'correct')
+    $correct = $correct.append($label1).append($input1)
 
+    $error = $('<div>').attr("class", "result").attr("align", "center")
+    $label2 = $('<label>').text('錯誤')
+    $input2 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'error')
+    $error = $error.append($label2).append($input2)
+
+    $clock = $('<div>').attr("class", "result").attr("align", "center")
+    $label3 = $('<label>').text('時間剩餘')
+    $input3 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'time')
+    $clock = $clock.append($label3).append($input3)
+
+    $score = $('<div>').attr("class", "result").attr("align", "center")
+    $label4 = $('<label>').text('分數')
+    $input4 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'score')
+    $score = $score.append($label4).append($input4)
+
+
+
+
+    $('#result').append($correct).append($error).append($score).append($clock)
+
+}
 
 
 
@@ -170,6 +196,8 @@ $(() => {
         if (mode == 0) {
             alert('請先選擇難度')
         } else if (mode == 1) {
+
+            showresult()
             normal()
             mode = 0
             $('#again').on('click', () => {
@@ -179,6 +207,8 @@ $(() => {
 
             })
         } else if (mode == 2) {
+
+            showresult()
             challenge()
             console.log("go here")
             mode = 0
@@ -225,10 +255,13 @@ var challenge = () => {
     var correct = 0;
     var error = 0;
     var ans = questionchallenge();
-    $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
+    $('#correct').val(correct)
+    $('#error').val(error)
+    $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+        // $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
     $again = $('<button>').attr("class", "btn-primary").addClass("btn-lg").text('重來').attr("id", "again")
-    $('#answerlist').empty()
-    $('#answerlist').append($answer)
+        // $('#answerlist').empty()
+        // $('#answerlist').append($answer)
         //$('#answerlist').append($again)
 
 
@@ -256,7 +289,9 @@ var challenge = () => {
                 }, 300);
             }
 
-            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
+            $('#correct').val(correct)
+            $('#error').val(error)
+            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
             ans = questionchallenge()
 
         } else if (event.keyCode == 39) {
@@ -275,7 +310,9 @@ var challenge = () => {
                 }, 300);
             }
 
-            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
+            $('#correct').val(correct)
+            $('#error').val(error)
+            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
             ans = questionchallenge();
 
         }
@@ -287,9 +324,11 @@ var normal = () => {
     var correct = 0;
     var error = 0;
     var ans = questionnormal();
-    $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
-    $('#answerlist').empty()
-    $('#answerlist').append($answer)
+    $('#correct').val(correct)
+    $('#error').val(error)
+    $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
+        // $('#answerlist').empty()
+        // $('#answerlist').append($answer)
 
 
     function keyFunction() {
@@ -315,7 +354,9 @@ var normal = () => {
                 }, 300);
             }
 
-            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
+            $('#correct').val(correct)
+            $('#error').val(error)
+            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
             ans = questionnormal()
 
         } else if (event.keyCode == 39) {
@@ -334,7 +375,9 @@ var normal = () => {
                 }, 300);
             }
 
-            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
+            $('#correct').val(correct)
+            $('#error').val(error)
+            $('#score').val((correct - 2 * error) >= 0 ? (correct - 2 * error) : 0)
             ans = questionnormal();
 
         }
