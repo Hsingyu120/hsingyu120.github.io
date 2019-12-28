@@ -279,3 +279,26 @@ body {
 label {
     font-size: 20px;
 }
+
+.btn-primary {
+    background-color: #5f84ad;
+    border-color: #5f84ad;
+}
+
+.btn-primary:hover {
+    background-color: #365c86;
+    border-color: #365c86;
+}
+
+h1 {
+    margin-bottom: 0rem;
+}
+
+.result1 {
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    display: inline-block;
+}
