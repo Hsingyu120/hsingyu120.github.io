@@ -42,5 +42,13 @@ th {
 }
 
 li {
-    font-weight: 200;
+    font-weight: 250;
+}
+
+th {
+    font-weight: 400;
+}
+
+td {
+    font-weight: 250;
 }
