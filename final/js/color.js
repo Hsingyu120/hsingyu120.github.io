@@ -161,13 +161,13 @@ var questionchallenge = () => {
 
 
 function showresult() {
+    //asd
 
     $('#conoragain').empty()
 
-    $again = $('<button>').attr('id', 'again').attr('type', 'button').attr('class', 'btn').addClass('btn-primary').text('重新')
-    $home = $('<a>').attr('href', location.href)
+    $again = $('<button>').attr('id', 'again').attr('onclick', "window.location.href=" + "'" + location.href + "'").attr('class', 'btn').addClass('btn-primary').text('重新')
 
-    $('#conoragain').append($again.append($home))
+    $('#conoragain').append($again)
 
     $correct = $('<div>').attr("class", "result").attr("align", "center")
     $label1 = $('<label>').text('正確')
