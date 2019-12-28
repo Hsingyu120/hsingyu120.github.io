@@ -225,11 +225,11 @@ var challenge = () => {
     var correct = 0;
     var error = 0;
     var ans = questionchallenge();
-    $answer = $('<span >').attr("class", "answerspan").text('正確 : ' + correct + ' 錯誤 ： ' + error)
+    $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
     $again = $('<button>').attr("class", "btn-primary").addClass("btn-lg").text('重來').attr("id", "again")
     $('#answerlist').empty()
     $('#answerlist').append($answer)
-    $('#answerlist').append($again)
+        //$('#answerlist').append($again)
 
 
     function keyFunction() {
@@ -256,7 +256,7 @@ var challenge = () => {
                 }, 300);
             }
 
-            $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
+            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
             ans = questionchallenge()
 
         } else if (event.keyCode == 39) {
@@ -275,7 +275,7 @@ var challenge = () => {
                 }, 300);
             }
 
-            $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
+            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
             ans = questionchallenge();
 
         }
@@ -287,7 +287,7 @@ var normal = () => {
     var correct = 0;
     var error = 0;
     var ans = questionnormal();
-    $answer = $('<span >').attr("class", "answerspan").text('正確 : ' + correct + ' 錯誤 ： ' + error)
+    $answer = $('<span >').attr("class", "answerspan").text('錯誤 ： ' + error + ' 正確 : ' + correct)
     $('#answerlist').empty()
     $('#answerlist').append($answer)
 
@@ -315,7 +315,7 @@ var normal = () => {
                 }, 300);
             }
 
-            $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
+            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
             ans = questionnormal()
 
         } else if (event.keyCode == 39) {
@@ -334,7 +334,7 @@ var normal = () => {
                 }, 300);
             }
 
-            $answer.text('正確 : ' + correct + ' 錯誤 ： ' + error)
+            $answer.text('錯誤 ： ' + error + ' 正確 : ' + correct)
             ans = questionnormal();
 
         }
