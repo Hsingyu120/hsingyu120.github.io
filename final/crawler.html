@@ -1,35 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/snake.css">
+    <script type="text/javascript">
+        var countdownnumber = 5;
+        var countdownid;
+
+        function initial() {
+            countdownfunc();
+        }
+
+        function countdownfunc() {
+            var x = document.getElementById("countdown");
+            x.innerHTML = countdownnumber;
+            if (countdownnumber == 0) {
+                //alert("倒數結束");
+                clearTimeout(countdownid);
+            } else {
+                countdownnumber--;
+                if (countdownid) {
+                    clearTimeout(countdownid);
+                }
+                countdownid = setTimeout(countdownfunc, 1000);
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <div class="box" id="box">
-        <ul class="oul" id="oul">
-
-        </ul>
-    </div>
-    <div class="box1" id="box1">
-        <p>最佳历史纪录:<span id="ls">0</span></p>
-        <p>当前长度:<span id="dqcd">0</span></p>
-        <select id="level">
-            <option value="300">初级</option>
-            <option value="200">中级</option>
-            <option value="100">较难</option>
-        </select>
-        <input type="button" id="btn1" value="开始">
-        <input type="button" id="btn2" value="暂停">
-    </div>
-    <!-- <audio src="mp3/bg.mp3" loop id="bgaudio"></audio>
-    <audio src="mp3/go.wav" id="go"></audio>
-    <audio src="mp3/chi.mp3" id="chi"></audio> -->
-    <script src="js/crawler.js"></script>
+<body onload="initial();">
+    <p>倒數時間:</p>
+    <div id="countdown"></div>
 </body>
 
 </html>
