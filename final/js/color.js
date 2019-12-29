@@ -347,7 +347,10 @@ $(() => {
             if (countdownnumber == 0) {
 
                 clearTimeout(countdownid);
-                alert("Time's Up")
+
+                　　　　　　　　
+                alert('時間到')
+                window.location = location.href
             } else {
                 console.log('--')
                 countdownnumber--;
