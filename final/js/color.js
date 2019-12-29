@@ -334,7 +334,7 @@ $(() => {
 
         var mode = 0
         var countdownid;
-        var countdownnumber = 5;
+        var countdownnumber = 30;
 
 
 
