@@ -5,6 +5,66 @@ var chsubjectarray = ['背景', '文字']
 var chverbarray = ['是', '不是']
 var andor = [' 或 ', ' 且 ']
 
+var normal = () => {
+    var correct = 0;
+    var error = 0;
+    var score = 0;
+    var ans = questionnormal();
+
+    score = updateresult(correct, error, score)
+
+    function keyFunction() {
+
+        if (event.keyCode == 37) {
+
+            if (false == ans) {
+                correct++
+                score++
+
+                $("#left").attr("class", 'correct');
+
+                setTimeout(function timeout() {
+                    $("#left").attr("class", 'nside');
+                }, 300);
+
+
+                //$('#left').attr("class", 'correct')
+            } else {
+                error++
+                score -= 2
+                $('#left').attr("class", 'error')
+                setTimeout(function timeout() {
+                    $("#left").attr("class", 'nside');
+                }, 300);
+            }
+            score = updateresult(correct, error, score)
+            ans = questionnormal()
+
+        } else if (event.keyCode == 39) {
+
+            if (true == ans) {
+                correct++
+                score++
+                $('#right').attr("class", 'correct')
+                setTimeout(function timeout() {
+                    $("#right").attr("class", 'nside');
+                }, 300);
+            } else {
+                error++
+                score -= 2
+                $('#right').attr("class", 'error')
+                setTimeout(function timeout() {
+                    $("#right").attr("class", 'nside');
+                }, 300);
+            }
+
+            score = updateresult(correct, error, score)
+            ans = questionnormal();
+
+        }
+    }
+    document.onkeydown = keyFunction;
+}
 var questionnormal = () => {
     //create a complete sentance
     var cindex = rand(0, 8)
@@ -23,7 +83,6 @@ var questionnormal = () => {
     $('#container').append($div)
 
     // change sentance every time 
-
     $moji = $('<span>').attr('class', sentancecolor).text(sentance)
     $div.append($moji)
 
@@ -68,6 +127,70 @@ var questionnormal = () => {
     }
 
 
+}
+var challenge = () => {
+
+    var correct = 0;
+    var error = 0;
+    var score = 0;
+    var ans = questionchallenge();
+    score = updateresult(correct, error, score);
+
+
+    function keyFunction() {
+        // console.log("keyfunction")
+
+        if (event.keyCode == 37) {
+
+            if (false == ans) {
+                correct++
+                score++
+
+                $("#left").attr("class", 'correct');
+
+                setTimeout(function timeout() {
+                    $("#left").attr("class", 'nside');
+                }, 300);
+
+
+
+            } else {
+                error++
+                score -= 2
+                $('#left').attr("class", 'error')
+                setTimeout(function timeout() {
+                    $("#left").attr("class", 'nside');
+                }, 300);
+            }
+
+            score = updateresult(correct, error, score)
+
+            ans = questionchallenge()
+
+        } else if (event.keyCode == 39) {
+
+            if (true == ans) {
+                correct++
+                score++
+                $('#right').attr("class", 'correct')
+                setTimeout(function timeout() {
+                    $("#right").attr("class", 'nside');
+                }, 300);
+            } else {
+                error++
+                score -= 2
+                $('#right').attr("class", 'error')
+                setTimeout(function timeout() {
+                    $("#right").attr("class", 'nside');
+                }, 300);
+            }
+
+            score = updateresult(correct, error, score)
+            ans = questionchallenge();
+
+        }
+    }
+    document.onkeydown = keyFunction;
 }
 var questionchallenge = () => {
     //create a complete sentance
@@ -161,13 +284,11 @@ var questionchallenge = () => {
 
 
 function showresult() {
-    //asd
-
+    //change the button 開始 to 重新
     $('#conoragain').empty()
-
     $again = $('<button>').attr('id', 'again').attr('onclick', "window.location.href=" + "'" + location.href + "'").attr('class', 'btn').addClass('btn-primary').text('重新')
     $('#conoragain').append($again)
-
+        //show result board
     $correct = $('<div>').attr("class", "result1").attr("align", "center")
     $label1 = $('<label>').text('正確')
     $input1 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'correct')
@@ -189,90 +310,12 @@ function showresult() {
     $score = $score.append($label4).append($input4)
 
 
-
-
     $('#result').append($correct).append($error).append($score).append($clock)
 
 }
-
-
-
-$(() => {
-    var mode = 0
-    $('#confirm').on('click', () => {
-
-        if (mode == 0) {
-            alert('請先選擇難度')
-        } else if (mode == 1) {
-
-
-            $('#result').empty() //清掉模式選擇
-
-            showresult()
-            normal()
-            mode = 0
-                // $('#again').on('click', () => {
-
-            //     alert("again")
-            //     return
-
-            // })
-        } else if (mode == 2) {
-            $('#result').empty()
-
-            showresult()
-            challenge()
-            console.log("go here")
-            mode = 0
-                // $('#again').on('click', () => {
-
-            //     alert("again")
-
-
-            // })
-
-        }
-
-
-
-    })
-
-
-    console.log('JS ready')
-
-
-
-    $('#normal').on('click', () => {
-
-        mode = 1
-
-    })
-
-
-    $('#challenge').on('click', () => {
-
-        mode = 2
-
-    })
-
-    // $('#again').on('click', () => {
-
-
-
-
-    // })
-
-
-
-
-})
-
 var updateresult = (correct, error, score) => {
     $('#correct').val(correct)
     $('#error').val(error)
-
-
-
 
     if (score >= 0) {
         $('#score').val(score)
@@ -285,129 +328,81 @@ var updateresult = (correct, error, score) => {
 
 }
 
+/*********************************************************************/
 
-var challenge = () => {
+$(() => {
 
-    var correct = 0;
-    var error = 0;
-    var score = 0;
-    var ans = questionchallenge();
-    score = updateresult(correct, error, score);
-
-
-    function keyFunction() {
-        // console.log("keyfunction")
-
-        if (event.keyCode == 37) {
-
-            if (false == ans) {
-                correct++
-                score++
-
-                $("#left").attr("class", 'correct');
-
-                setTimeout(function timeout() {
-                    $("#left").attr("class", 'nside');
-                }, 300);
+        var mode = 0
+        var countdownid;
+        var countdownnumber = 5;
 
 
 
+        function countdownfunc() {
+
+
+            console.log('hi')
+
+            $('#time').val(countdownnumber)
+            if (countdownnumber == 0) {
+
+                clearTimeout(countdownid);
+                alert("Time's Up")
             } else {
-                error++
-                score -= 2
-                $('#left').attr("class", 'error')
-                setTimeout(function timeout() {
-                    $("#left").attr("class", 'nside');
-                }, 300);
+                console.log('--')
+                countdownnumber--;
+                if (countdownid) {
+                    clearTimeout(countdownid);
+                }
+                countdownid = setTimeout(countdownfunc, 1000);
             }
-
-            score = updateresult(correct, error, score)
-
-            ans = questionchallenge()
-
-        } else if (event.keyCode == 39) {
-
-            if (true == ans) {
-                correct++
-                score++
-                $('#right').attr("class", 'correct')
-                setTimeout(function timeout() {
-                    $("#right").attr("class", 'nside');
-                }, 300);
-            } else {
-                error++
-                score -= 2
-                $('#right').attr("class", 'error')
-                setTimeout(function timeout() {
-                    $("#right").attr("class", 'nside');
-                }, 300);
-            }
-
-            score = updateresult(correct, error, score)
-            ans = questionchallenge();
-
         }
-    }
-    document.onkeydown = keyFunction;
-}
-
-var normal = () => {
-    var correct = 0;
-    var error = 0;
-    var score = 0;
-    var ans = questionnormal();
-
-    score = updateresult(correct, error, score)
-
-    function keyFunction() {
-
-        if (event.keyCode == 37) {
-
-            if (false == ans) {
-                correct++
-                score++
-
-                $("#left").attr("class", 'correct');
-
-                setTimeout(function timeout() {
-                    $("#left").attr("class", 'nside');
-                }, 300);
 
 
-                //$('#left').attr("class", 'correct')
-            } else {
-                error++
-                score -= 2
-                $('#left').attr("class", 'error')
-                setTimeout(function timeout() {
-                    $("#left").attr("class", 'nside');
-                }, 300);
-            }
-            score = updateresult(correct, error, score)
-            ans = questionnormal()
+        $('#confirm').on('click', () => {
 
-        } else if (event.keyCode == 39) {
+            if (mode == 0) {
+                alert('請先選擇難度')
+            } else if (mode == 1) {
 
-            if (true == ans) {
-                correct++
-                score++
-                $('#right').attr("class", 'correct')
-                setTimeout(function timeout() {
-                    $("#right").attr("class", 'nside');
-                }, 300);
-            } else {
-                error++
-                score -= 2
-                $('#right').attr("class", 'error')
-                setTimeout(function timeout() {
-                    $("#right").attr("class", 'nside');
-                }, 300);
+
+                $('#result').empty() //清掉模式選擇
+
+                showresult()
+                normal()
+                countdownfunc()
+                mode = 0
+
+
+            } else if (mode == 2) {
+
+                $('#result').empty() //清掉模式選擇
+
+                showresult()
+                challenge()
+                countdownfunc(30)
+                mode = 0
+
+
             }
 
-            score = updateresult(correct, error, score)
-            ans = questionnormal();
 
-        }
-    }
-    document.onkeydown = keyFunction;
-}
+
+        })
+
+
+        $('#normal').on('click', () => {
+
+            mode = 1
+
+        })
+
+        $('#challenge').on('click', () => {
+
+            mode = 2
+
+        })
+
+
+    })
+    /*********************************************************************/
