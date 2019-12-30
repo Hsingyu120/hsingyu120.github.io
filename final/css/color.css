@@ -263,7 +263,7 @@ body {
 }
 
 .form-control {
-    display: inline;
+    /* display: inline; */
     height: 100px;
     width: 150px;
     font-size: 50px;
