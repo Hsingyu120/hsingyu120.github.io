@@ -319,3 +319,7 @@ h1 {
     line-height: 30px;
     margin-bottom: 4px;
 }
+
+.form-control:disabled {
+    background-color: white;
+}
