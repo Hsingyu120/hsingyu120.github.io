@@ -305,22 +305,22 @@ function showresult() {
         //show result board
     $correct = $('<div>').attr("class", "result1").attr("align", "center")
     $label1 = $('<label>').text('正確')
-    $input1 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'correct')
+    $input1 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'correct').attr('disabled', true)
     $correct = $correct.append($label1).append($input1)
 
     $error = $('<div>').attr("class", "result1").attr("align", "center")
     $label2 = $('<label>').text('錯誤')
-    $input2 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'error')
+    $input2 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'error').attr('disabled', true)
     $error = $error.append($label2).append($input2)
 
     $clock = $('<div>').attr("class", "result1").attr("align", "center")
     $label3 = $('<label>').text('時間剩餘')
-    $input3 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'time')
+    $input3 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'time').attr('disabled', true)
     $clock = $clock.append($label3).append($input3)
 
     $score = $('<div>').attr("class", "result1").attr("align", "center")
     $label4 = $('<label>').text('分數')
-    $input4 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'score')
+    $input4 = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('id', 'score').attr('disabled', true)
     $score = $score.append($label4).append($input4)
 
 
