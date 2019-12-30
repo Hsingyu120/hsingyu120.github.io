@@ -61,6 +61,7 @@ function setidealwakeuptime(deadlinetime) {
     } else {
         idealwakeuptime = deadlinetime
     }
+    console.log()
 
     return idealwakeuptime //string
 
