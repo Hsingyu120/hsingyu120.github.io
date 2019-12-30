@@ -5,6 +5,20 @@ var chsubjectarray = ['背景', '文字']
 var chverbarray = ['是', '不是']
 var andor = [' 或 ', ' 且 ']
 
+var config = {
+    apiKey: "AIzaSyAP2qFl8eWdaDijWBGJ9oFAj9MDB5NG4Lk",
+    authDomain: "quickstart-1575120625329.firebaseapp.com",
+    databaseURL: "https://quickstart-1575120625329.firebaseio.com",
+    projectId: "quickstart-1575120625329",
+    storageBucket: "quickstart-1575120625329.appspot.com",
+    messagingSenderId: "664382912294",
+    appId: "1:664382912294:web:d282b7926bfca70d1273e7",
+    measurementId: "G-80FEFGRJWQ"
+};
+firebase.initializeApp(config);
+var db = firebase.firestore();
+
+
 var normal = () => {
     var correct = 0;
     var error = 0;
@@ -335,24 +349,53 @@ $(() => {
         var mode = 0
         var countdownid;
         var countdownnumber = 30;
+        var name = 'zxcvbnm123'
+        var history = 0
 
 
 
-        function countdownfunc() {
+        var countdownfunc = () => {
 
 
-            console.log('hi')
+            //console.log('hi')
 
             $('#time').val(countdownnumber)
             if (countdownnumber == 0) {
 
-                clearTimeout(countdownid);
+                clearTimeout(countdownid);　　　
 
-                　　　　　　　　
+                if (name != "zxcvbnm123") {
+                    var Mode = mode == 1 ? "normal" : "challenge"
+                    console.log("Time's up! " + name + " get " + $('#score').val() + " points" + "Mode is " + Mode)　
+                    var doc_ref = db.collection("Front_End_Final").doc("Rank").collection(Mode).doc(name);
+                    console.log(history + " " + $('#score').val())
+                    if (history < $('#score').val()) {
+
+                        doc_ref.update({ Score: $('#score').val() })
+                    }
+
+                }
+                countdownnumber--;
+
+                if (countdownid) {
+                    clearTimeout(countdownid);
+                }
+                countdownid = setTimeout(countdownfunc, 1000);
+                $('#time').attr('id', 'Time') //不讓-1出現
+
+
+
+
+
+            } else if (countdownnumber == -1) {
+                countdownnumber++
+
                 alert('時間到')
+
+
                 window.location = location.href
             } else {
-                console.log('--')
+
                 countdownnumber--;
                 if (countdownid) {
                     clearTimeout(countdownid);
@@ -360,13 +403,26 @@ $(() => {
                 countdownid = setTimeout(countdownfunc, 1000);
             }
         }
+        $('#save').on('click', () => {
+
+
+            if ($('#name').val()) {
+                name = $('#name').val()
+                $('#confirm').attr('disabled', true)
+
+            } else(alert("如果要記錄排名，請輸入暱稱後再按儲存，否則可以略過"))
+
+
+        })
 
 
         $('#confirm').on('click', () => {
 
             if (mode == 0) {
-                alert('請先選擇難度')
+                alert('請先選擇難度 遊戲ID選填')
             } else if (mode == 1) {
+
+
 
 
                 $('#result').empty() //清掉模式選擇
@@ -374,17 +430,18 @@ $(() => {
                 showresult()
                 normal()
                 countdownfunc()
-                mode = 0
+
 
 
             } else if (mode == 2) {
+
 
                 $('#result').empty() //清掉模式選擇
 
                 showresult()
                 challenge()
-                countdownfunc(30)
-                mode = 0
+                countdownfunc()
+
 
 
             }
@@ -398,11 +455,86 @@ $(() => {
 
             mode = 1
 
+            if (name != 'zxcvbnm123') {
+
+                var Mode = mode == 1 ? "normal" : "challenge"
+
+
+                var doc_ref = db.collection("Front_End_Final").doc("Rank").collection(Mode).doc(name);
+
+
+                doc_ref.get().then(function(doc) {
+
+
+
+
+                        if (doc.exists) {
+                            console.log('有名')
+
+                            history = doc.data().Score
+
+                            console.log(history)
+
+                            $('#confirm').removeAttr('disabled')
+
+                        } else {
+
+                            console.log("not file ")
+                            doc_ref.set({ Name: name, Score: 0 })
+
+                        }
+
+
+
+                    })
+                    .catch(function(error) {
+                        console.log("提取文件時出錯:", error);
+
+                    });
+            }
+
+
         })
 
         $('#challenge').on('click', () => {
 
             mode = 2
+            if (name != 'zxcvbnm123') {
+                var history = 0
+                var Mode = mode == 1 ? "normal" : "challenge"
+
+
+                var doc_ref = db.collection("Front_End_Final").doc("Rank").collection(Mode).doc(name);
+
+
+                doc_ref.get().then(function(doc) {
+
+
+
+
+                        if (doc.exists) {
+                            console.log('有名')
+
+                            history = doc.data().Score
+
+                            console.log(history)
+                            $('#confirm').removeAttr('disabled')
+
+                        } else {
+
+                            console.log("not file ")
+                            doc_ref.set({ Name: name, Score: 0 })
+
+                        }
+
+
+
+                    })
+                    .catch(function(error) {
+                        console.log("提取文件時出錯:", error);
+
+                    });
+            }
 
         })
 
