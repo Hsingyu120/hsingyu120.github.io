@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- 引用自已定義的CSS -->
-    <link rel="stylesheet" href="./css/color.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/record.css">
     <title>Record</title>
 </head>
 
@@ -32,18 +33,63 @@
 
         </div>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>普通模式排名</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">排名</th>
+                            <th scope="col">玩家暱稱</th>
+
+                            <th scope="col">分數</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="data1">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h1>進階模式排名</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">排名</th>
+                            <th scope="col">玩家暱稱</th>
+
+                            <th scope="col">分數</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="data2">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <h5 id="loading">載入中</h5>
+
+        <div>
 
 
 
 
 
+            <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js "></script>
+            <!-- 引入 firebase 函式庫 -->
+            <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase.js "></script>
+            <!-- 引入 firestore 函式庫 -->
+            <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js "></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 
-    <script src="js/color.js "></script>
-    <script src="js/math.js "></script>
+            <script src="js/math.js "></script>
+            <script src="js/record.js"></script>
 
 
 </body>
