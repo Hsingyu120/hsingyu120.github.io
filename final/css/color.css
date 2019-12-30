@@ -263,6 +263,7 @@ body {
 }
 
 .form-control {
+    display: inline;
     height: 100px;
     width: 150px;
     font-size: 50px;
@@ -317,9 +318,21 @@ h1 {
     background-color: #7e7e7e;
     border-color: #7e7e7e;
     line-height: 30px;
-    margin-bottom: 4px;
+    margin-bottom: 13px;
+    margin-left: 10px;
 }
 
 .form-control:disabled {
     background-color: white;
+}
+
+#name {
+    color: black;
+    height: 60px;
+    width: 200px;
+    font-size: 30px
+}
+
+input {
+    -webkit-user-select: text;
 }
