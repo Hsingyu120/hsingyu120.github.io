@@ -1,0 +1,11 @@
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: #0c0b35
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
