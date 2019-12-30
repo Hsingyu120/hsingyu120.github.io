@@ -419,7 +419,7 @@ $(() => {
         $('#confirm').on('click', () => {
 
             if (mode == 0) {
-                alert('請先選擇難度 遊戲ID選填')
+                alert('請先選擇難度   遊戲暱稱為選填')
             } else if (mode == 1) {
 
 
