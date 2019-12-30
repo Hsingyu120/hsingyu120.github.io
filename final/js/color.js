@@ -481,6 +481,7 @@ $(() => {
 
                             console.log("not file ")
                             doc_ref.set({ Name: name, Score: 0 })
+                            $('#confirm').removeAttr('disabled')
 
                         }
 
@@ -524,6 +525,7 @@ $(() => {
 
                             console.log("not file ")
                             doc_ref.set({ Name: name, Score: 0 })
+                            $('#confirm').removeAttr('disabled')
 
                         }
 
