@@ -91,6 +91,7 @@ var questionnormal = () => {
         //background color is index[0]
         //sentance color is index[1]
 
+
     $('#container').empty()
     $div = $('<div>').attr('class', backgroundcolor).addClass('anscontainer')
         //change background every time
