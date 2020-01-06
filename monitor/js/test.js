@@ -66,35 +66,72 @@ function setidealwakeuptime(deadlinetime) {
     return idealwakeuptime //string
 
 }
+
+function setidealwakeuptime2(deadlinetime) {
+    let meansnooze = 0
+    for (let index = 0; index < acwutime.length; index++) {
+        console.log("  使用者賴床時間： " + snooze[index])
+        meansnooze += snooze[index];
+    }
+
+    meansnooze = meansnooze / snooze.length // L_bar
+
+
+    let solution = ''
+
+
+    let dminust = time2minutes(deadlinetime) - time2minutes(target)
+
+    if (dminust <= 0) {
+        solution = minutes2time(time2minutes(deadlinetime) - meansnooze)
+    } else if (dminust > 0 & dminust < 2 * meansnooze) {
+        solution = minutes2time(time2minutes(deadlinetime) - meansnooze)
+    } else if (dminust > 0 & dminust >= 2 * meansnooze) {
+        solution = minutes2time(time2minutes(target) + meansnooze)
+    }
+    return solution
+
+
+
+
+}
 //初始化 firebase
 var config = {
-    apiKey: "AIzaSyAP2qFl8eWdaDijWBGJ9oFAj9MDB5NG4Lk",
-    authDomain: "quickstart-1575120625329.firebaseapp.com",
-    databaseURL: "https://quickstart-1575120625329.firebaseio.com",
-    projectId: "quickstart-1575120625329",
-    storageBucket: "quickstart-1575120625329.appspot.com",
-    messagingSenderId: "664382912294",
-    appId: "1:664382912294:web:d282b7926bfca70d1273e7",
-    measurementId: "G-80FEFGRJWQ"
+    apiKey: "AIzaSyBBzlXTTIyjaJrhy3Dnf_4xQtA_ZTLaBDY",
+    authDomain: "quickstart-1f30d.firebaseapp.com",
+    databaseURL: "https://quickstart-1f30d.firebaseio.com",
+    projectId: "quickstart-1f30d",
+    storageBucket: "quickstart-1f30d.appspot.com",
+    messagingSenderId: "654432884151",
+    appId: "1:654432884151:web:8e3051471a668b33c9c432",
+    measurementId: "G-LHYTZWFVSR"
 };
 firebase.initializeApp(config);
 var db = firebase.firestore();
 var acwutime = []
 var snooze = []
+var target = ''
 
 
 
 $(() => {
     setInterval(gettime, 1000)
 
+    var date = []
+    for (let index = 0; index < 5; index++) {
+        var d = new Date();
+        d.setDate(d.getDate() - index)
+        date.push(String(d.getFullYear()) + '-' + String(d.getMonth() + 1).padStart(2, "0") + '-' + String(d.getDate()).padStart(2, "0"));
+
+    }
 
 
-    var day = ['第一天', '第二天', '第三天', '第四天', '第五天']
-    for (let index = 0; index < day.length; index++) {
-        var docRef = db.collection("fake_data").doc("situation1").collection(day[index]).doc("數據");
+    for (let index = 0; index < date.length; index++) {
+        var docRef = db.collection("fake_data").doc("situation1").collection(date[index]).doc("data");
         docRef.get().then(function(doc) {
 
                 if (doc.exists) {
+
                     acwutime.push(doc.data().使用者實際起床時間);
                     snooze.push(doc.data().使用者賴床時間);
                 } else {
@@ -107,6 +144,38 @@ $(() => {
 
         ;
     }
+
+    var docRef = db.collection("fake_data").doc("situation1").collection('usrssettingtime').doc("data");
+    docRef.get().then(function(doc) {
+
+            if (doc.exists) {
+
+                target = doc.data().使用者希望規律起床的時間
+            } else {
+                console.log("找不到文件");
+            }
+        })
+        .catch(function(error) {
+            console.log("提取文件時出錯:", error);
+        });
+
+
+
+
+
+
+
+
+    $('#save2').on('click', () => {
+
+        var baseline = $('#baseline').val()
+
+        console.log(baseline)
+        var doc_ref = db.collection("fake_data").doc("situation1").collection("usrssettingtime").doc("data");
+        baseline = baseline + ':00'
+
+        doc_ref.set({ '使用者希望規律起床的時間': baseline })
+    })
 
 
 
@@ -144,15 +213,26 @@ $(() => {
 
 
             //把使用者輸入的死線時間上傳db
-            var doc_ref = db.collection("fake_data").doc("situation1").collection("demo那天").doc("數據");
-
-            doc_ref.set({ '使用者設定起床時間': deadlinetime })
+            var d = new Date();
+            d.setDate(d.getDate() + 1)
+            tomorrow = (String(d.getFullYear()) + '-' + String(d.getMonth() + 1).padStart(2, "0") + '-' + String(d.getDate()).padStart(2, "0"));
 
             deadlinetime = deadlinetime.split('T')[1] + ":00" //只取時間，補上秒數
 
-            var idealwakeuptime = setidealwakeuptime(deadlinetime);
+
+
+
+            var idealwakeuptime = setidealwakeuptime2(deadlinetime);
             //計算顯示「預計喚醒時間」
             $('#idealwakeuptime').val(idealwakeuptime)
+
+            var doc_ref = db.collection("fake_data").doc("situation1").collection(tomorrow).doc("data");
+            doc_ref.set({
+                '使用者設定起床時間': deadlinetime,
+                '日期': tomorrow,
+                '鬧鐘預計喚醒時間': idealwakeuptime
+            })
+
 
 
 
