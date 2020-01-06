@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 import time
-import pandas as pd 
+import pandas as pd
 import json
 import sys
 
@@ -10,7 +10,7 @@ situation = sys.argv[1]
 
 # 引用私密金鑰
 # path/to/serviceAccount.json 請用自己存放的路徑
-cred = credentials.Certificate('../serviceAccount.json')
+cred = credentials.Certificate('../serviceAccount1.json')
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
 # 初始化firestore
@@ -31,6 +31,7 @@ record = json.loads(record)
 
 for i in record:
 
-    doc_ref = db.collection("fake_data").document(situation).collection(i['日期']).document("數據")
+    doc_ref = db.collection("fake_data").document(situation).collection(str(i['日期'])).document("data")
+    #print((i['日期']))
 
     doc_ref.set(i)
