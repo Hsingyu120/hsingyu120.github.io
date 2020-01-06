@@ -1,34 +1,28 @@
 var config = {
-    apiKey: "AIzaSyAP2qFl8eWdaDijWBGJ9oFAj9MDB5NG4Lk",
-    authDomain: "quickstart-1575120625329.firebaseapp.com",
-    databaseURL: "https://quickstart-1575120625329.firebaseio.com",
-    projectId: "quickstart-1575120625329",
-    storageBucket: "quickstart-1575120625329.appspot.com",
-    messagingSenderId: "664382912294",
-    appId: "1:664382912294:web:d282b7926bfca70d1273e7",
-    measurementId: "G-80FEFGRJWQ"
+    apiKey: "AIzaSyBBzlXTTIyjaJrhy3Dnf_4xQtA_ZTLaBDY",
+    authDomain: "quickstart-1f30d.firebaseapp.com",
+    databaseURL: "https://quickstart-1f30d.firebaseio.com",
+    projectId: "quickstart-1f30d",
+    storageBucket: "quickstart-1f30d.appspot.com",
+    messagingSenderId: "654432884151",
+    appId: "1:654432884151:web:8e3051471a668b33c9c432",
+    measurementId: "G-LHYTZWFVSR"
 };
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
 
-function sensorvalue() {
-    //console.log('initial sensor value')
-    var docRef = db.collection("Sensor").doc("20191213");
+
+$(() => {
+
+    var docRef = db.collection("fake_data").doc("situation1").collection('usrssettingtime').doc("data");
+
     docRef.get().then(function(doc) {
+
             if (doc.exists) {
-                //console.log(doc.data().tem);
-                $('#show').empty()
-                    // $span = $('<span>').text(JSON.stringify(doc.data()[1]));
-                    //   $('#show').append($span)
 
-
-
-                $('#temp').val(doc.data().tem)
-                $('#hum').val(doc.data().hum)
-                $('#co2').val(doc.data().co2)
-
-
+                //輸出歷次結果表格
+                $('#baseline').text('使用者希望起床的規律時間：' + doc.data().使用者希望規律起床的時間)
 
             } else {
                 console.log("找不到文件");
@@ -38,15 +32,20 @@ function sensorvalue() {
             console.log("提取文件時出錯:", error);
         });
 
-}
-
-$(() => {
 
 
 
-    var day = ['第一天', '第二天', '第三天', '第四天', '第五天']
-    for (let index = 0; index < day.length; index++) {
-        var docRef = db.collection("fake_data").doc("situation1").collection(day[index]).doc("數據");
+    var date = []
+    for (let index = -1; index < 5; index++) {
+        var d = new Date();
+        d.setDate(d.getDate() - index)
+        date.push(String(d.getFullYear()) + '-' + String(d.getMonth() + 1).padStart(2, "0") + '-' + String(d.getDate()).padStart(2, "0"));
+
+    }
+
+    //date會抓取 明天 和包含今天以前的過去五天  一共六天的資料  ，其中明天的資訊必須在home輸入後才會顯示
+    for (let index = 0; index < date.length; index++) {
+        var docRef = db.collection("fake_data").doc("situation1").collection(date[index]).doc("data");
         docRef.get().then(function(doc) {
 
                 if (doc.exists) {
