@@ -176,12 +176,12 @@ input {
 
 #challenge {
     height: 100px;
-    width: 300px;
+    width: 250px;
 }
 
 #normal {
     height: 100px;
-    width: 300px;
+    width: 250px;
 }
 
 body {
@@ -265,7 +265,7 @@ body {
 .form-control {
     /* display: inline; */
     height: 100px;
-    width: 150px;
+    width: 130px;
     font-size: 50px;
 }
 
