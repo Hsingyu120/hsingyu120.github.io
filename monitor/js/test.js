@@ -61,7 +61,8 @@ function setidealwakeuptime(deadlinetime) {
     } else {
         idealwakeuptime = deadlinetime
     }
-    console.log()
+
+    //console.log(meansnooze)
 
     return idealwakeuptime //string
 
@@ -71,12 +72,12 @@ function setidealwakeuptime2(deadlinetime) {
     let meansnooze = 0
     for (let index = 0; index < acwutime.length; index++) {
         console.log("  使用者賴床時間： " + snooze[index])
-        meansnooze += snooze[index];
+        meansnooze += Number(snooze[index]);
     }
-
+    //console.log(meansnooze)
     meansnooze = meansnooze / snooze.length // L_bar
 
-
+    //console.log(meansnooze)
     let solution = ''
 
 
@@ -115,6 +116,9 @@ var target = ''
 
 
 $(() => {
+
+
+
     setInterval(gettime, 1000)
 
     var date = []
@@ -177,6 +181,20 @@ $(() => {
         doc_ref.set({ '使用者希望規律起床的時間': baseline })
     })
 
+    docRef.get().then(function(doc) {
+
+            if (doc.exists) {
+                document.getElementById("baseline").value = doc.data().使用者希望規律起床的時間;
+                $('#save2').text('更改')
+                    // $('#baseline').attr('style', 'background-color: #eaecef')
+            }
+        })
+        .catch(function(error) {
+            console.log("提取文件時出錯:", error);
+        });
+
+
+
 
 
 
@@ -202,7 +220,9 @@ $(() => {
 
 
         var deadlinetime = $('#deadlinetime').val()
-        if (deadlinetime.length > 15) {
+
+        if (deadlinetime.length > 4) {
+            console.log(deadlinetime)
 
 
             $('#idealwakeuptime').val(idealwakeuptime)
@@ -217,7 +237,9 @@ $(() => {
             d.setDate(d.getDate() + 1)
             tomorrow = (String(d.getFullYear()) + '-' + String(d.getMonth() + 1).padStart(2, "0") + '-' + String(d.getDate()).padStart(2, "0"));
 
-            deadlinetime = deadlinetime.split('T')[1] + ":00" //只取時間，補上秒數
+            deadlinetime = deadlinetime + ":00" //只取時間，補上秒數
+
+            console.log(deadlinetime)
 
 
 
@@ -232,7 +254,6 @@ $(() => {
                 '日期': tomorrow,
                 '鬧鐘預計喚醒時間': idealwakeuptime
             })
-
 
 
 
