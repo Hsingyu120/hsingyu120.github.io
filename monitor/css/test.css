@@ -1,6 +1,7 @@
 .jumbotron {
     background-color: #bef1ed;
     color: #FFFFFF;
+    height: 150px
 }
 
 .center {
@@ -15,7 +16,7 @@
     align-content: center;
     /* font-size: 50px; */
     height: 40px;
-    width: 100px;
+    width: 80px;
     margin-bottom: 3px;
 }
 
