@@ -27,7 +27,7 @@
                     <a class="nav-link" href="data.html">Data</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://docs.google.com/presentation/d/1-1M2SBk7eG4Bvl6fFxR6g2rYkuHrE0_ZEJrT9AlHk2w/edit?usp=sharing">About</a>
+                    <a class="nav-link" href="https://drive.google.com/file/d/1uI3fsI0wKqz796a-5nTf5C3NEusnwZDB/view?usp=sharing">About</a>
                 </li>
 
             </ul>
@@ -52,74 +52,64 @@
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">日期</label>
-                <input type="text" id="date" class="form-control">
+                <input type="text" id="date" class="form-control" disabled=true>
 
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">星期</label>
-                <input type="text" id="day" class="form-control">
+                <input type="text" id="day" class="form-control" disabled=true>
 
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">時間</label>
-                <input type="text" id="time" class="form-control">
+                <input type="text" id="time" class="form-control" disabled=true>
 
             </div>
         </div>
 
         <div style="height:100px">
-            <h1>設定最晚起床時間&顯示預計喚醒時間</h1>
+            <h1>時間設定、預估</h1>
         </div>
 
 
         <div>
             <div class="form-row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="validationCustom01">最晚起床時間設定</label>
-                    <input type="datetime-local" id="deadlinetime" class="form-control" placeholder="YYYY/MM/DD">
+                    <input type="time" id="deadlinetime" class="form-control">
                 </div>
-                <div class="col-md-4 mb-3 center" style="line-height: 100px;">
-                    <button id="save" type="button" class="btn mybtn">Save</button>
+                <div class="col-md-1 mb-3 center" style="line-height: 100px;">
+                    <button id="save" type="button" class="btn mybtn">儲存</button>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom02">睡前鬧鐘喚醒預估</label>
-                    <input type="text" id="idealwakeuptime" class="form-control" placeholder="24:00">
+                    <input type="text" id="idealwakeuptime" class="form-control" placeholder="尚無資料" disabled=true>
                 </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom02">希望規律起床的時間</label>
+                    <input type="time" id="baseline" class="form-control">
+                </div>
+
+                <div class="col-md-1 mb-3 center" style="line-height: 100px;">
+                    <button id="save2" type="button" class="btn mybtn">儲存</button>
+                </div>
+
             </div>
 
         </div>
 
-        <div style="height:100px">
-            <h1>設定希望規律起床的時間(僅需設定一次)</h1>
-        </div>
 
-
+        <!-- 
         <div>
             <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom02">希望規律起床的時間</label>
-                    <input type="time" id="baseline" class="form-control" placeholder="YYYY/MM/DD">
-                </div>
-
-                <div class="col-md-4 mb-3 center" style="line-height: 100px;">
-                    <button id="save2" type="button" class="btn mybtn">Save</button>
-                </div>
-
 
             </div>
 
-        </div>
-
-
-
-        <!-- <div class="col-md-4 mb-3 center" style="line-height: 100px;">
-            <button id="wakeup" type="button" class="btn btn-primary">wakeup</button>
         </div> -->
 
 
 
 
-        <!-- <button id="save" type="button" class="btn btn-primary">Save</button> -->
     </div>
 
 
