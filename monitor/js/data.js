@@ -22,7 +22,8 @@ $(() => {
             if (doc.exists) {
 
                 //輸出歷次結果表格
-                $('#baseline').text('使用者希望起床的規律時間：' + doc.data().使用者希望規律起床的時間)
+                $('#baseline').empty()
+                $('#baseline').text(doc.data().使用者希望規律起床的時間)
 
             } else {
                 console.log("找不到文件");
